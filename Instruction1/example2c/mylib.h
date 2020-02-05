@@ -31,3 +31,6 @@ void report
 	( int     amount ,
 	  Coin*   coins  ,
 	  int     n      );
+
+void check
+    (int amount);

@@ -17,7 +17,7 @@
 
 int main ( void )
 {
-	Coin coins[10];
+	Coin coins[8];
  	int amount;
 	int n;
 
@@ -25,6 +25,8 @@ int main ( void )
 
 	amount = read();	
     
+    check(amount);
+
 	split( amount , coins );
 
     report( amount , coins , n );

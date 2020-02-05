@@ -78,9 +78,12 @@ int main ( void )
 
 	reset ( coins , n );
 
+  // test check
+    amount = 759;
+    printf("\nTest 3: Check function 759 cents\n\n");
+       check(amount);
 
-
-
+reset ( coins , n );
   	return 0;
 }
 

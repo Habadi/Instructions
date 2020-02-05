@@ -15,7 +15,7 @@ int init
 	( Coin* coins )
 
 {
-	int n = 6;
+	int n = 8;
 
 	coins[0].value = 200;
 	coins[1].value = 100;
@@ -23,6 +23,8 @@ int init
 	coins[3].value = 20;
 	coins[4].value = 10;
 	coins[5].value = 5;
+    coins[6].value = 2;
+	coins[7].value = 1;
 
 	coins[0].name = "2 Euro";
 	coins[1].name = "1 Euro";
@@ -30,6 +32,8 @@ int init
 	coins[3].name = "20 cent";
 	coins[4].name = "10 cent";
 	coins[5].name = "5 cent";
+    coins[6].name = "2 cent";
+	coins[7].name = "1 cent";
 
 	reset( coins , n );
 
@@ -77,6 +81,24 @@ int read( void )
 	return amount;
 }
 
+void check
+    (int amount)
+{
+  if (amount>1000)
+    {
+	   printf("Enter lower than 1000\n");
+			abort();
+			}
+
+   // if(amount%5!=0)
+ //    {   printf("Not divisble by 5\n");
+  //  abort();
+       // }
+if(amount<=0)
+     {   printf("Enter positive amount\n");
+    abort();
+        }
+} 
 
 //----------------------------------------------------------
 //  Splits the amount of money in number of different coins
