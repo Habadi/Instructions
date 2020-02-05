@@ -27,12 +27,25 @@ int main ( void )
     
 	int i = 0;
 
-  	while( current > 0 )
+  	while( current > 0)
   	{ 
-   		if ( current >= coins[i] )
+        if (current>=1000)
+        {
+            printf("Enter lower than 1000 cents\n");
+            abort();
+        }
+
+        if (current%5!=0)
+        {
+            printf("Not dmivisble by 5\n");
+            abort();
+        }
+
+   		if ( current >= coins[i]   )
     	{
       		count[i] = count[i] + 1;
       		current  = current - coins[i]; 
+           
     	}
     	else
     	{

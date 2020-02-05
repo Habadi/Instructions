@@ -24,6 +24,24 @@ int read( void )
 //       count      array that counts the number of coins used
 //       coins      array with values of specific coins
 //----------------------------------------------------------
+void check
+    (int amount)
+{
+  if (amount>1000)
+    {
+	   printf("Enter lower than 1000\n");
+			abort();
+			}
+
+    if(amount%5!=0)
+     {   printf("Not divisble by 5\n");
+    abort();
+        }
+if(amount<=0)
+     {   printf("Enter positive amount\n");
+    abort();
+        }
+} 
 
 void split
 
@@ -47,6 +65,7 @@ void split
     	}
   	}
 }
+
 
 
 //----------------------------------------------------------

@@ -24,10 +24,13 @@ int main ( void )
 
 	amount = read();	
     
+    check(amount);
+
 	split( amount , count , coins );
 
     report( amount , count , coins , 6 );
 
+    
   	return 0;
 }
 
