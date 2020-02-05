@@ -17,20 +17,22 @@ int main( void )
 	int   studID[MAX_GRADES];
 	int   count;
 	int   hist[HIST_ITEMS];
+    float average; //added
 
 	float stdDev;
 
 	count = read_grades( "../grades/grades.dat" , grades , studID );
 
-	print_grades( grades , studID , count );
+    print_grades( grades , studID , count );
+
 
 	average = calc_average( grades , count );
+    
+    printf("The average grade is : %0.2f\n",average); //from 2.00 to 0.02
 
-	printf("The average grade is : %2.0f\n",average);
+	stdDev   = calc_std_deviation( grades , count,average );
 
-	stdDev   = calc_std_deviation( grades , count );
-
-	// printf("The standard deviation is : \n");
+	 printf("The standard deviation is : %0.2f\n", stdDev);
 
 	clear_histogram( hist );
 

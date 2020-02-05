@@ -54,7 +54,7 @@ int read_grades
 			return 0;
 		}
 
-		if ( !(grad > 0. && grad < 10.0 ) )
+		if ( !(grad > 0. && grad <= 10.0 ) ) // was only < 
 		{
 			printf("Student number %d has an invalid score : %e\n",sID,grad);
 			return 0;
@@ -100,11 +100,11 @@ void print_grades
 		printf("%d : %3.1f\n",studID[i],grades[i]);
 	}
 
-	if ( count = 0 )
+	if ( count == 0 )  //was =
 	{
 		printf("The list is empty\n\n");
 	}
-	else if( count == 1 )
+	else if ( count == 1 )         // 
 	{
 		printf("The list contains 1 grade\n\n");
 	}
@@ -129,97 +129,139 @@ float calc_average
       int        count  )
 
 {
-	float  sum = 0.0; 
+	float  sum = 0.0;   // was int 
 	float  average;	
 	int    i;
-
+   
 	if ( count == 0 )
 	{
 		printf("Number of items equals zero\n");
 		return 0.;	
 	}
 
-	for ( i = 0 ; i < count ; i++ );
+	//for ( i = 0 ; i < count ; i++ );
+	//{
+	//	sum = sum + grades[i];
+       //printf("\n = %.6f",sum);
+	//}
+        i=0;
+	while (i < count)
 	{
 		sum = sum + grades[i];
+		++i;
 	}
-
 	average = sum / count;
+
 
 	return average;
 }
 
 
-//---------------------------------------------------------------------
-//  To be completed by the student
-//---------------------------------------------------------------------
-
-
 float calc_std_deviation
 
-	( float*     grades ,
-      int        count  );
+ 	( float*     grades ,
+       int        count  ,
+     float      average )
 
-{
-	// To be completed by the student
+ {  int i;
+    float SD;
+    float sumN=0.0;
 
-	return 0.;
+ //   for (i = 0; i < count; ++i)
+   i=0;
+    while (i<count)
+    {
+        sumN = sumN+ (grades[i] - average)*(grades[i] - average);
+       ++i;
+    }
+ 	// To be completed by the student
+      
+    SD=sqrt(sumN / (count-1));
+    
+    return SD;
+ }
+
+
+// //---------------------------------------------------------------------
+// //  Clears the contents of the histogram hist
+// //---------------------------------------------------------------------
+
+
+ void clear_histogram
+
+ 	( int*        hist )
+
+ {
+ 	int i;
+
+ 	for ( i = 0 ; i < HIST_ITEMS ; i++ )
+ 	{
+ 		hist[i] = 0;
+ 	}
 }
 
 
-//---------------------------------------------------------------------
-//  Clears the contents of the histogram hist
-//---------------------------------------------------------------------
+
+// //---------------------------------------------------------------------
+// // Determines the position in the histogram of a value x.
+// // The histogram has 12 intervals:
+// //
+// // 0  : the values 0.0-0.5
+// // 1  : the values 0.5-1.5
+// // ....
+// // 10 : the values 9.5-9.9
+// // 11 : the value  10.0
+// //---------------------------------------------------------------------
 
 
-void clear_histogram
+ int get_hist_item
 
-	( int*        hist )
+ 	( float*    grades,
+      int count,
+       int* hist )
 
-{
-	int i;
+ {  int i;
+ 	int d;
+	//int hcount
 
-	for ( i = 0 ; i < HIST_ITEMS ; i++ )
+    //for ( i = 0 ; i <count ; i++ )
+	i=0;
+	while(i<count)
 	{
-		hist[i] = 0;
+		if( grades[i]>=0 && grades[i]<0.5)
+		{	d=1;
+			hist[d]=1;
+		}
+		if( grades[i]>=0 && grades[i]<8)
+		{	d=2;
+			hist[d]=2;
+
+		}
+		++i;
 	}
+ //	if ( x > 9.99 ) return 11;
+
+ //	return round(x);
+ }
 
 
-
-//---------------------------------------------------------------------
-// Determines the position in the histogram of a value x.
-// The histogram has 12 intervals:
-//
-// 0  : the values 0.0-0.5
-// 1  : the values 0.5-1.5
-// ....
-// 10 : the values 9.5-9.9
-// 11 : the value  10.0
-//---------------------------------------------------------------------
+// //---------------------------------------------------------------------
+// //  To be completed by the student
+// //---------------------------------------------------------------------
 
 
-int get_hist_item
+ void fill_histogram
 
-	( float    x )
+ 	( float*           grades ,
+ 	  int*             hist   )
 
-{
-	if ( x > 9.99 ) return 11;
+ { float loop;
+		
 
-	return round(x);
-}
+    for(loop = 0; loop < HIST_ITEMS; loop++)
+   // printf("hist %d is %d\n",loop, hist[loop]);
+    printf("%.2f-%.2f\n",loop/2,loop/2+0.5); 
+ 	//To be completed by the student
+ }
 
-
-//---------------------------------------------------------------------
-//  To be completed by the student
-//---------------------------------------------------------------------
-
-
-void fill_histogram
-
-	( float*           grades ,
-	  int*             hist   )
-
-{
-	//To be completed by the student
-}
 
